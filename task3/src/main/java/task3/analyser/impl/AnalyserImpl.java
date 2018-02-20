@@ -11,14 +11,14 @@ import task3.reader.impl.CustomXMLReader;
 import java.io.IOException;
 
 public class AnalyserImpl implements Analyser {
-
+    private final static String END_OF_TAG = "</";
     private static AnalyserImpl instance = new AnalyserImpl();
     private AnalyserImpl(){}
     public static AnalyserImpl getInstance(){
         return  instance;
     }
 
-    public Tag analyse() {
+    public void analyse() {
         Tag tag = null;
         Creator creator = Creator.getInstance();
         PrintInfo print = new PrintInfo();
@@ -27,7 +27,7 @@ public class AnalyserImpl implements Analyser {
             String content;
             while ((content = customXMLReader.read()) != null) {
 
-                if (content.equals("</")) {
+                if (content.equals(END_OF_TAG)) {
                     continue;
                 }
                 tag = creator.createTag(content);
@@ -36,7 +36,6 @@ public class AnalyserImpl implements Analyser {
         } catch (IOException e) {
             System.out.println(e.toString());
         }
-        return tag;
     }
 
 
