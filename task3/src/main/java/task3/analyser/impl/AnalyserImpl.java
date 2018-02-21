@@ -11,7 +11,6 @@ import task3.reader.impl.CustomXMLReader;
 import java.io.IOException;
 
 public class AnalyserImpl implements Analyser {
-    private final static String END_OF_TAG = "</";
     private static AnalyserImpl instance = new AnalyserImpl();
     private AnalyserImpl(){}
     public static AnalyserImpl getInstance(){
@@ -27,9 +26,6 @@ public class AnalyserImpl implements Analyser {
             String content;
             while ((content = customXMLReader.read()) != null) {
 
-                if (content.equals(END_OF_TAG)) {
-                    continue;
-                }
                 tag = creator.createTag(content);
                 print.print(tag);
             }
