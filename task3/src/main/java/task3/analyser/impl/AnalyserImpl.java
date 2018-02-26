@@ -17,21 +17,20 @@ public class AnalyserImpl implements Analyser {
         return  instance;
     }
 
-    public void analyse() {
+    public Tag analyse() {
         Tag tag = null;
         Creator creator = Creator.getInstance();
-        PrintInfo print = new PrintInfo();
-
-        try (CustomXMLReader customXMLReader = new CustomXMLReader()) {
+       
+         try (CustomXMLReader customXMLReader = new CustomXMLReader()) {
             String content;
             while ((content = customXMLReader.read()) != null) {
 
                 tag = creator.createTag(content);
-                print.print(tag);
             }
         } catch (IOException e) {
             System.out.println(e.toString());
         }
+        return tag;
     }
 
 
