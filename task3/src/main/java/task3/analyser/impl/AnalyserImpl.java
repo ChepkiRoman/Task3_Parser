@@ -27,7 +27,7 @@ public class AnalyserImpl implements Analyser {
                 tag = creator.createTag(content);
             }
         } catch (IOException e) {
-            throw e;
+            throw e;// а где смысл, Карл? Где?
         }
         return tag;
     }
